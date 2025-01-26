@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resource/Audio/AudioMixer/AudioMixer.mixer.meta
 guid: 93c876f36873c5a4aa76c35ae51308c0
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 24100000
+========
+guid: e7593ddcb90cc764d99913ab2c18c13d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 6200000
+>>>>>>>> origin/Bubble-System:Assets/_Project/BubbleSystem/Data/BubblePhysicsMaterial.physicsMaterial2D.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
