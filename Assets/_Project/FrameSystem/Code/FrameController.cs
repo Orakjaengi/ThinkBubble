@@ -62,6 +62,8 @@ public class FrameController : Singleton<FrameController>
 
     public void MoveNext()
     {
+        if (BubbleManager.Instance.IsSpawning) return;
+
         if (CatEvent.IsCutScene) return;
 
         if (_currentFrame == _frames.Length - 1) return;
@@ -149,13 +151,13 @@ public class FrameController : Singleton<FrameController>
         }
     }
 
-    void DisableButtons()
+    public void DisableButtons()
     {
         _right.gameObject.SetActive(false);
         _left.gameObject.SetActive(false);
     }
 
-    void EnableButtons()
+    public void EnableButtons()
     {
         if (_currentFrame == 0)
         {
