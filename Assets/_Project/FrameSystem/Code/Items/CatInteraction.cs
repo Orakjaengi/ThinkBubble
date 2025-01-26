@@ -11,8 +11,11 @@ public class CatInteraction : MonoBehaviour
 
     [SerializeField] Collider2D _col;
 
+    [SerializeField] AudioClip meow;
+
     void OnMouseDown()
     {
+        AudioManager.Instance.PlaySFX(meow);
         _anim.SetBool("IsPetting", true);
         _col.enabled = false;
 

@@ -23,6 +23,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private AudioSource sfxSource;
 
+    [SerializeField] private GameObject audioPanel;
+
+    [SerializeField] private AudioResource bgm;
+
     void Awake()
     {
         if (Instance == null)
@@ -54,6 +58,16 @@ public class AudioManager : MonoBehaviour
                 }
             }
                
+        }
+
+        PlayBGM(bgm);
+    }
+
+    private void Update()
+    {
+        if (audioPanel != null && Input.GetKeyDown(KeyCode.Escape))
+        {
+            audioPanel.SetActive(true);
         }
     }
 

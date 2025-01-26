@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 0
+  btnClickSound: {fileID: 8300000, guid: f0f101bb6cd3fad49af7c36fe95d56e4, type: 3}
 --- !u!1 &7257544222494790694
 GameObject:
   m_ObjectHideFlags: 0

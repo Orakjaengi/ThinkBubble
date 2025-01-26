@@ -243,3 +243,5 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 93c876f36873c5a4aa76c35ae51308c0, type: 2}
   bgmSource: {fileID: 9054292512676250684}
   sfxSource: {fileID: 6488174821098245494}
+  audioPanel: {fileID: 0}
+  bgm: {fileID: 8300000, guid: 9753261cd1818894eb7f4ffdd6d62df9, type: 3}
