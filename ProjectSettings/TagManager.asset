@@ -50,6 +50,9 @@ TagManager:
   - name: Player
     uniqueID: 2451537159
     locked: 0
+  - name: Cat
+    uniqueID: 2048849147
+    locked: 0
   - name: Border
     uniqueID: 3926918343
     locked: 0
@@ -58,6 +61,9 @@ TagManager:
     locked: 0
   - name: Bubbles
     uniqueID: 2579291137
+    locked: 0
+  - name: Crying
+    uniqueID: 3473629145
     locked: 0
   m_RenderingLayers:
   - Default
