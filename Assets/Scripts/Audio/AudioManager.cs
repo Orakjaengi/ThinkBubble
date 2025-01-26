@@ -1,6 +1,19 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using AudioMixerType;
+using System;
+using UnityEditor;
+using UnityEngine.InputSystem;
 
+namespace AudioMixerType
+{
+    public enum AudioMixerGroupType
+    {
+        Master,
+        BGM,
+        SFX
+    }
+}
 
 public class AudioManager : MonoBehaviour
 {
@@ -23,6 +36,27 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        for(int i = 0; i < Enum.GetValues(typeof(AudioMixerGroupType)).Length; i++)
+        {
+            if (Enum.IsDefined(typeof(AudioMixerGroupType), i))
+            {
+                AudioMixerGroupType type = (AudioMixerGroupType)i;
+
+                if (PlayerPrefs.HasKey(type.ToString()))
+                {
+                    SetAudioVolume(type.ToString(), PlayerPrefs.GetFloat(type.ToString()));
+                }
+                else
+                {
+                    SetAudioVolume(type.ToString(), 0.5f);
+                }
+            }
+               
+        }
+    }
+
     public void SetAudioVolume(string audioType, float volume)
     {
         audioMixer.SetFloat(audioType, Mathf.Log10(volume) * 20);
@@ -30,14 +64,35 @@ public class AudioManager : MonoBehaviour
     
     public void PlayBGM(AudioResource audioResource)
     {
-        bgmSource.Stop();
+        bgmSource?.Stop();
         bgmSource.resource = audioResource;
-        bgmSource.Play();
+        bgmSource?.Play();
     }
 
-    public void PlaySFX(AudioResource audioResource)
+    public void StopBGM()
+    {
+        bgmSource.Stop();
+    }
+
+    public void PlaySFX(AudioClip audioClip)
+    {
+        sfxSource.PlayOneShot(audioClip);
+    }
+
+    public void StopSFX()
+    {
+        sfxSource?.Stop();
+    }
+
+    public void PlaySFXLoop(AudioResource audioResource)
     {
         sfxSource.resource = audioResource;
-        sfxSource.Play();
+        sfxSource.loop = true;
+        sfxSource?.Play();
+    }
+
+    public void StopSFXLoop()
+    {
+        sfxSource.loop = false;
     }
 }

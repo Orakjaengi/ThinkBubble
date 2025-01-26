@@ -1,34 +1,32 @@
-using TreeEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
+using AudioMixerType;
 
 public class VolumeSetting : MonoBehaviour, IPointerUpHandler
 {
-    [SerializeField] private string audioType;
+    [SerializeField] private AudioMixerGroupType audioType;
+    [SerializeField] private string typeToString;
     [SerializeField] private Slider volumeSlider;
 
     private void Start()
     {
         volumeSlider = GetComponent<Slider>();
-        audioType = transform.parent.name;
+        typeToString = audioType.ToString();
 
-        if (PlayerPrefs.HasKey(audioType))
+        if (PlayerPrefs.HasKey(typeToString))
         {
-            volumeSlider.value = PlayerPrefs.GetFloat(audioType);
-            AudioManager.Instance.SetAudioVolume(audioType, volumeSlider.value);
+            volumeSlider.value = PlayerPrefs.GetFloat(typeToString);
         }
         else
         {
             volumeSlider.value = 0.5f;
-            AudioManager.Instance.SetAudioVolume(audioType, volumeSlider.value);
         }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        PlayerPrefs.SetFloat(audioType, volumeSlider.value);
-        AudioManager.Instance.SetAudioVolume(audioType, volumeSlider.value);
+        PlayerPrefs.SetFloat(typeToString, volumeSlider.value);
+        AudioManager.Instance.SetAudioVolume(typeToString, volumeSlider.value);
     }
 }
