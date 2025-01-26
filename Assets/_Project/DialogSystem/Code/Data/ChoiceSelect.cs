@@ -8,6 +8,8 @@ public class ChoiceSelect : MonoBehaviour
 
     public int Damage = 0;
 
+    [SerializeField] AudioClip btnClickSound;
+
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(Select);
@@ -15,6 +17,8 @@ public class ChoiceSelect : MonoBehaviour
 
     void Select()
     {
+        AudioManager.Instance.PlaySFX(btnClickSound);
+
         ChoicesMade++;
         Debug.Log(Damage);
         BubbleManager.Instance.HandleDamage(Damage);

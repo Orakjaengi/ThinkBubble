@@ -78,6 +78,9 @@ MonoBehaviour:
   - {fileID: 4568285675523496571}
   - {fileID: 2880103336888921791}
   SpawnDelay: 0.08
+  IsSpawning: 0
+  createBubbleSound: {fileID: 8300000, guid: 05219dd2eec073d49ad3857e964c71a3, type: 3}
+  popBubbleSound: {fileID: 8300000, guid: 282eab1a84ec57140bd36c7c917a8d5d, type: 3}
 --- !u!114 &8704107312966030264
 MonoBehaviour:
   m_ObjectHideFlags: 0

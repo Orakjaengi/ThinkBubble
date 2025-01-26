@@ -23,6 +23,9 @@ public class DialogManager : MonoBehaviour
     [Header("Player")]
     public Transform playerTransform;
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip showDialogSound;
+
     [Header("Test")]
     [SerializeField] private int myNum;
 
@@ -71,6 +74,8 @@ public class DialogManager : MonoBehaviour
             {
                 distanceY++;
             }
+
+            AudioManager.Instance.PlaySFX(showDialogSound);
 
             StartCoroutine(choice.GetComponent<ChoiceMove>().CoAnimateButton(distanceY * choiceAnimOffset));
         }

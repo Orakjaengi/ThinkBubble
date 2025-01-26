@@ -26,6 +26,9 @@ public class FrameController : Singleton<FrameController>
     [SerializeField] float fadeInDuration;
     [SerializeField] float fadeOutDuration;
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip walkSound;
+
     public float FadeInDuration => fadeInDuration;
 
     int _currentFrame;
@@ -111,6 +114,7 @@ public class FrameController : Singleton<FrameController>
         DisableButtons();
 
         _anim.SetBool("IsWalking", true);
+        AudioManager.Instance.PlaySFX(walkSound);
 
         _isMoving = true;
         float elapsedTime = 0;
@@ -127,6 +131,7 @@ public class FrameController : Singleton<FrameController>
         _isMoving = false;
 
         _anim.SetBool("IsWalking", false);
+        AudioManager.Instance.StopSFX();
 
         EnableButtons();
     }

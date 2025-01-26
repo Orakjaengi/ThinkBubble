@@ -18,6 +18,10 @@ public class BubbleManager : MonoBehaviour
 
     public bool IsSpawning;
 
+    [Header("Sound")]
+    [SerializeField] AudioClip createBubbleSound;
+    [SerializeField] AudioClip popBubbleSound;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -62,7 +66,7 @@ public class BubbleManager : MonoBehaviour
             if (BubbleList.Count == BubbleCount)
             {
                 Debug.Log("Stopping coroutine...");
-                IsSpawning = false();
+                IsSpawning = false;
                 StopAllCoroutines();
                 yield break;
             }
@@ -80,7 +84,9 @@ public class BubbleManager : MonoBehaviour
         Quaternion rotation = Quaternion.FromToRotation(from, to);
         var obj = Instantiate(BubbleClass, position, rotation);
         obj.transform.localScale *= Random.Range(0.65f, 1.0f);
-        
+
+        AudioManager.Instance.PlaySFX(createBubbleSound);
+
         BubbleCount++;
         BubbleList.Add(obj);
     }
@@ -96,6 +102,8 @@ public class BubbleManager : MonoBehaviour
         BubbleList[index].GetComponentInChildren<popInAtSpawn>().PopOut();
         BubbleList.RemoveAt(index);
         BubbleCount--;
+
+        AudioManager.Instance.PlaySFX(popBubbleSound);
     }
 
     // removes a bubble from a random location

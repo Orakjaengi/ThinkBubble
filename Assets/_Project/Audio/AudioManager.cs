@@ -71,12 +71,12 @@ public class AudioManager : MonoBehaviour
 
     public void StopBGM()
     {
-        bgmSource.Stop();
+        bgmSource?.Stop();
     }
 
     public void PlaySFX(AudioClip audioClip)
     {
-        sfxSource.PlayOneShot(audioClip);
+        sfxSource?.PlayOneShot(audioClip);
     }
 
     public void StopSFX()

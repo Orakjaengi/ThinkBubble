@@ -56,4 +56,5 @@ MonoBehaviour:
   question: {fileID: 0}
   questionPositionOffset: {x: 300, y: 300}
   playerTransform: {fileID: 0}
+  showDialogSound: {fileID: 8300000, guid: d8347b71ef5ed3345938d5e4b965da51, type: 3}
   myNum: 2

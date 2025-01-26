@@ -1,3 +1,4 @@
+using Unity.Jobs;
 using UnityEngine;
 
 public class CatFollow : MonoBehaviour
@@ -14,6 +15,9 @@ public class CatFollow : MonoBehaviour
 	[SerializeField] float LeftXOffset = -1;
 	[SerializeField] float RightXOffset = 1;
 
+	[Header("Sound")]
+	[SerializeField] AudioClip walkSound;
+
 	bool _isFollowing;
 	bool IsFollowing 
 	{
@@ -23,6 +27,15 @@ public class CatFollow : MonoBehaviour
         }
 		set
         {
+			if (value && !_isFollowing)
+			{
+                AudioManager.Instance.PlaySFX(walkSound);
+            }
+			else if(!value && _isFollowing)
+			{
+				AudioManager.Instance.StopSFX();
+			}
+
 			_isFollowing = value;
 			_animator.SetBool("IsWalking", value);
 
@@ -63,7 +76,7 @@ public class CatFollow : MonoBehaviour
 		Vector3 direction = heading / distance;
 
 		if (distance > _outerBuffer)
-			IsFollowing = true;
+            IsFollowing = true;
 
 		if (IsFollowing)
 		{
